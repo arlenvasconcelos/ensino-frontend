@@ -12,6 +12,9 @@ const useStyles = makeStyles({
   depositContext: {
     flex: 1,
   },
+  title: {
+    fontWeight: '100',
+  }
 });
 
 export default function Deposits() {
