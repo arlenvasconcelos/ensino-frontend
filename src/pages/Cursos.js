@@ -17,10 +17,15 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from '../components/listItems';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-//import components
-import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
+
 
 function Copyright() {
   return (
@@ -142,7 +147,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Administrador
+            Cursos
           </Typography>
         </Toolbar>
       </AppBar>
@@ -166,6 +171,56 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography className={classes.heading}>Cadastrar Unidade</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+              <Grid item xs={12}>
+                <Typography>
+                  <Box>
+                    <TextField
+                      id="standard-full-width"
+                      label="Nome"
+                      style={{ margin: 8, width: "100%" }}
+                      placeholder="Insira o nome"
+                      fullWidth
+                      margin="normal"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                      <TextField
+                      id="standard-full-width"
+                      label="Sala"
+                      style={{ margin: 8, width: "40%" }}
+                      placeholder="Insira a sala"
+                      margin="normal"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                      <TextField
+                      id="standard-full-width"
+                      label="Fone"
+                      style={{ margin: 8, width: "40%" }}
+                      placeholder="Insira o ramal"
+                      margin="normal"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}/>
+                        <Button style={{ alignItems: "flex-end", marginTop: "1%"  }} variant="contained" color="primary">
+                          Cadastrar
+                        </Button>
+                      </Box>
+                </Typography>
+                </Grid>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Orders />

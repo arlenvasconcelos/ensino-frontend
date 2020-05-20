@@ -25,7 +25,7 @@ const rows = [
 export default function Orders() {
   return (
     <React.Fragment>
-      <Title>Unnidades</Title>
+      <Title>Unidades</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
