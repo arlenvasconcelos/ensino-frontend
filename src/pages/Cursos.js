@@ -24,7 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Orders from '../components/Orders';
+import Table from '../components/tableCourse';
 
 
 function Copyright() {
@@ -178,7 +178,7 @@ export default function Dashboard() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography className={classes.heading}>Cadastrar Unidade</Typography>
+                <Typography className={classes.heading}>Cadastrar Curso</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
               <Grid item xs={12}>
@@ -196,18 +196,9 @@ export default function Dashboard() {
                       }}/>
                       <TextField
                       id="standard-full-width"
-                      label="Sala"
-                      style={{ margin: 8, width: "40%" }}
-                      placeholder="Insira a sala"
-                      margin="normal"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}/>
-                      <TextField
-                      id="standard-full-width"
-                      label="Fone"
-                      style={{ margin: 8, width: "40%" }}
-                      placeholder="Insira o ramal"
+                      label="Tipo"
+                      style={{ margin: 8, width: "60%" }}
+                      placeholder="Insira o tipo"
                       margin="normal"
                       InputLabelProps={{
                         shrink: true,
@@ -223,7 +214,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Table />
               </Paper>
             </Grid>
           </Grid>

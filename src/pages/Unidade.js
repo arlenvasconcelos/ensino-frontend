@@ -24,7 +24,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Orders from '../components/Orders';
+import Table from '../components/tableUnit';
 
 
 function Copyright() {
@@ -223,7 +223,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Table />
               </Paper>
             </Grid>
           </Grid>
