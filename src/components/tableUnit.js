@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -26,7 +24,7 @@ const rows = [
   createData("sd", "101", "321")
 ];
 
-export default function Orders() {
+export default function TableUnit() {
   return (
     <React.Fragment>
       <Title>Unidades</Title>
@@ -53,14 +51,3 @@ export default function Orders() {
     </React.Fragment>
   );
 }
-
-export function add() {
-  const nome = document.getElementById("nameUnit").value;
-  const sala = document.getElementById("room").value;
-  const fone = document.getElementById("phone").value;
-
-  rows.push(createData(nome, sala, fone));
-  console.log(rows)
-
-  Orders()
-} 

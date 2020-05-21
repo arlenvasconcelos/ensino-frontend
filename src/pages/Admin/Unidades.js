@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Orders from '../../components/tableUnit';
+import TableUnit from '../../components/tableUnit';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Dashboard() {
+export default function Unidades() {
   const classes = useStyles();
 
   return (
@@ -69,7 +69,7 @@ export default function Dashboard() {
                 InputLabelProps={{
                   shrink: true,
                 }}/>
-                  <Button onClick={Orders} style={{ alignItems: "flex-end", marginTop: "1%"  }} variant="contained" color="primary">
+                  <Button style={{ alignItems: "flex-end", marginTop: "1%"  }} variant="contained" color="primary">
                     Cadastrar
                   </Button>
                 </Box>
@@ -80,7 +80,7 @@ export default function Dashboard() {
       </Grid>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <Orders />
+          <TableUnit />
         </Paper>
       </Grid>
     </>
