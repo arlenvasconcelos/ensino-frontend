@@ -11,7 +11,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+//components
 import CoursesTable from '../../components/Courses/CoursesTable';
+
+//api
+import api from '../../service/api'
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,35 +29,52 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cursos() {
 
+  //css
   const classes = useStyles();
 
+  //useState
   const defaultValue = {
     nome: '',
     tipo: ''
   }
-
   const [novoCurso, setNovoCurso] = useState(defaultValue);
-
-  const [cursos, setCursos] = useState([
-    {
-      nome: 'Informática',
-      tipo: 'Técnico'
-    }
-  ])
-
+  const [cursos, setCursos] = useState([]);
   const [error, setError] = useState({
     mensagem: '',
     status:''
   })
- 
+  
+  //funções
+  const loadCursos = () => {
+    api.get('/courses').then((response) => {
+      console.log(response.data.message)
+      console.log(response.data.data)
+      setCursos(response.data.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   const handleChange = (value, label) => {
     setNovoCurso({...novoCurso, [label]: value})
   }
 
   const handleSubmit = (e) => {
     if (novoCurso.nome !== ''){
-      setCursos([...cursos, novoCurso]) //guarda
-      setNovoCurso(defaultValue)
+      api.post('/courses', 
+        {
+          name: novoCurso.nome, 
+          type: novoCurso.tipo
+        }
+      ).then((response) => {
+        console.log(response)
+        setNovoCurso(defaultValue)
+        loadCursos();
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
     else {
       setError({
@@ -61,6 +83,11 @@ export default function Cursos() {
       })
     }
   }
+
+  //useEffects
+  useEffect(() => {
+    loadCursos()
+  },[])
 
   return (
     <>

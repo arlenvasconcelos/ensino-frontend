@@ -23,8 +23,8 @@ export default function CoursesTable(props) {
         <TableBody>
           {cursos.map((curso , key) => (
             <TableRow key={key}>
-              <TableCell>{curso.nome}</TableCell>
-              <TableCell>{curso.tipo}</TableCell>
+              <TableCell>{curso.name}</TableCell>
+              <TableCell>{curso.type}</TableCell>
             </TableRow>
           ))}
         </TableBody>
