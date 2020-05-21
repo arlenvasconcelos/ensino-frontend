@@ -7,6 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import Button from '@material-ui/core/Button';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // Generate Order Data
 function createData(nome, sala, phone ) {
@@ -20,6 +23,7 @@ function createData(nome, sala, phone ) {
 const rows = [
   createData("CRE", '101', '214'),
   createData("OE", '101', '214'),
+  createData("sd", "101", "321")
 ];
 
 export default function Orders() {
@@ -40,6 +44,8 @@ export default function Orders() {
               <TableCell>{row.nome}</TableCell>
               <TableCell>{row.sala}</TableCell>
               <TableCell>{row.phone}</TableCell>
+              <Button><EditIcon /></Button>
+              <Button><DeleteIcon /></Button>
             </TableRow>
           ))}
         </TableBody>
@@ -47,3 +53,14 @@ export default function Orders() {
     </React.Fragment>
   );
 }
+
+export function add() {
+  const nome = document.getElementById("nameUnit").value;
+  const sala = document.getElementById("room").value;
+  const fone = document.getElementById("phone").value;
+
+  rows.push(createData(nome, sala, fone));
+  console.log(rows)
+
+  Orders()
+} 

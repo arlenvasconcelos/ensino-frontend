@@ -9,37 +9,34 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 
 // Generate Order Data
-function createData(nome, sala, phone ) {
+function createData(nome, tipo ) {
   return { 
     nome, 
-    sala, 
-    phone: phone 
+    tipo, 
   };
 }
 
 const rows = [
-  createData("CRE", '101', '214'),
-  createData("OE", '101', '214'),
+  createData("Informática", 'Técnico'),
+  createData("Análise e Desenvolvimento de Sistemas", 'Superior'),
 ];
 
 export default function Orders() {
   return (
     <React.Fragment>
-      <Title>Unidades</Title>
+      <Title>Cursos</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Unidade</TableCell>
-            <TableCell>Sala</TableCell>
-            <TableCell>Fone/Ramal</TableCell>
+            <TableCell>Nome</TableCell>
+            <TableCell>Tipo</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row , key) => (
             <TableRow key={key}>
               <TableCell>{row.nome}</TableCell>
-              <TableCell>{row.sala}</TableCell>
-              <TableCell>{row.phone}</TableCell>
+              <TableCell>{row.tipo}</TableCell>
             </TableRow>
           ))}
         </TableBody>

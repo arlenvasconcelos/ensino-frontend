@@ -23,8 +23,9 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { add } from '../components/tableUnit';
 
-import Table from '../components/tableUnit';
+import Orders from '../components/tableUnit';
 
 
 function Copyright() {
@@ -185,7 +186,7 @@ export default function Dashboard() {
                 <Typography>
                   <Box>
                     <TextField
-                      id="standard-full-width"
+                      id="nameUnit"
                       label="Nome"
                       style={{ margin: 8, width: "100%" }}
                       placeholder="Insira o nome"
@@ -195,7 +196,7 @@ export default function Dashboard() {
                         shrink: true,
                       }}/>
                       <TextField
-                      id="standard-full-width"
+                      id="room"
                       label="Sala"
                       style={{ margin: 8, width: "40%" }}
                       placeholder="Insira a sala"
@@ -204,7 +205,7 @@ export default function Dashboard() {
                         shrink: true,
                       }}/>
                       <TextField
-                      id="standard-full-width"
+                      id="phone"
                       label="Fone"
                       style={{ margin: 8, width: "40%" }}
                       placeholder="Insira o ramal"
@@ -212,7 +213,7 @@ export default function Dashboard() {
                       InputLabelProps={{
                         shrink: true,
                       }}/>
-                        <Button style={{ alignItems: "flex-end", marginTop: "1%"  }} variant="contained" color="primary">
+                        <Button onClick={Orders} style={{ alignItems: "flex-end", marginTop: "1%"  }} variant="contained" color="primary">
                           Cadastrar
                         </Button>
                       </Box>
@@ -223,7 +224,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Table />
+                <Orders />
               </Paper>
             </Grid>
           </Grid>
