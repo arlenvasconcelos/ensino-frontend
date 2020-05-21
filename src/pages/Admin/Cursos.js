@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import Table from '../components/tableCourse';
+import Table from '../../components/tableCourse';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

@@ -3,17 +3,41 @@ import './App.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
 //pages
-import Cursos from './pages/Cursos';
-import Unidades from './pages/Unidades';
-import Dashboard from './pages/Dashboard';
+import Cursos from './pages/Admin/Cursos';
+import Unidades from './pages/Admin/Unidades';
+import DashboardAdmin from './pages/DashboardAdmin';
+import DashboardStudent from './pages/DashboardStudent';
+import DashboardEmployee from './pages/DashboardEmployee';
 
-const DashboardRoute = ({ component: Component, ...rest }) => (
+const DashboardAdminRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      <Dashboard>
+      <DashboardAdmin>
         <Component {...props} />
-      </Dashboard>
+      </DashboardAdmin>
+    )}
+  />
+);
+
+const DashboardStudentRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (
+      <DashboardStudent>
+        <Component {...props} />
+      </DashboardStudent>
+    )}
+  />
+);
+
+const DashboardEmployeeRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => (
+      <DashboardEmployee>
+        <Component {...props} />
+      </DashboardEmployee>
     )}
   />
 );
@@ -24,9 +48,9 @@ function App() {
       <Router>
         <Switch>
           {/* <DashboardRoute path="/admin/main" exact component={Main} /> */}
-          <DashboardRoute path="/admin/cursos" exact component={Cursos} />
-          <DashboardRoute path="/admin/unidade" exact component={Unidades} />
-          <Redirect from="*" to="/admin/cursos" />
+          <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
+          <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
+          {/* <Redirect from="*" to="/admin/cursos" /> */}
         </Switch>
       </Router>
     </div>
