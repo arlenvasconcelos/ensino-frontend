@@ -55,7 +55,6 @@ function App() {
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
           <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
-          <DashboardStudentRoute path="/admin/unidade" exact component={SolicitationsHistoric} />
           {/* <Redirect from="*" to="/admin/cursos" /> */}
         </Switch>
       </Router>
