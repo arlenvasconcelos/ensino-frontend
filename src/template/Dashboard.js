@@ -42,9 +42,7 @@ export default function Dashboard({children, title, listItems}) {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {children}
-          </Grid>
+          {children}
         </Container>
       </main>
     </div>

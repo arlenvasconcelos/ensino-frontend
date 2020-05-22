@@ -11,7 +11,9 @@ import Cursos from './pages/Admin/Cursos';
 import Unidades from './pages/Admin/Unidades';
 
 //student pages
-import SolicitationsHistoric  from './pages/DashboardStudent/SolicitationsHistoric';
+import SolicitationsHistoric  from './components/DashboardStudent/SolicitationsHistoric';
+import SolicitationForm  from './components/DashboardStudent/SolicitationForm';
+import MainStudent from './components/DashboardStudent/MainStudent';
 
 
 const DashboardAdminRoute = ({ component: Component, ...rest }) => (
@@ -54,7 +56,9 @@ function App() {
         <Switch>
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
+          <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
           <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
+          <DashboardStudentRoute path="/aluno/solicitacoes/cadastrar" exact component={SolicitationForm} />
           {/* <Redirect from="*" to="/admin/cursos" /> */}
         </Switch>
       </Router>
