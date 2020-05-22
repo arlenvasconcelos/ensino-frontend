@@ -2,12 +2,17 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
-//pages
-import Cursos from './pages/Admin/Cursos';
-import Unidades from './pages/Admin/Unidades';
+//templates
 import DashboardAdmin from './pages/DashboardAdmin';
 import DashboardStudent from './pages/DashboardStudent';
 import DashboardEmployee from './pages/DashboardEmployee';
+//admin pages 
+import Cursos from './pages/Admin/Cursos';
+import Unidades from './pages/Admin/Unidades';
+
+//student pages
+import SolicitationsHistoric  from './pages/DashboardStudent/SolicitationsHistoric';
+
 
 const DashboardAdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -47,9 +52,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* <DashboardRoute path="/admin/main" exact component={Main} /> */}
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
+          <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
+          <DashboardStudentRoute path="/admin/unidade" exact component={SolicitationsHistoric} />
           {/* <Redirect from="*" to="/admin/cursos" /> */}
         </Switch>
       </Router>
