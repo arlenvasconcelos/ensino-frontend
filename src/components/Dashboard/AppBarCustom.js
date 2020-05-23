@@ -52,7 +52,6 @@ export default function AppBarCustom ({handleDrawerOpen, open, title, location})
 
   const dispatch = useDispatch();
 
-  // const [redirect, setRedirect] = useState(false);
   const redirectPage = () => <Redirect to={{ pathname: '/', state: { from: location } }} />
 
   const handleLogout = async (e) => {
@@ -64,6 +63,7 @@ export default function AppBarCustom ({handleDrawerOpen, open, title, location})
       console.log(err)
     }
   };
+
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
