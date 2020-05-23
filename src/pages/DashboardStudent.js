@@ -11,17 +11,17 @@ import Dashboard from '../template/Dashboard';
 
 export const listItems = (
   <>
-    <ListItem button component={Link} to="/aluno/solicitacoes/cadastrar">
+    <ListItem button component={Link} to="/aluno">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Nova Solicitação" />
+      <ListItemText primary="Início" />
     </ListItem>
     <ListItem button component={Link} to="/aluno/solicitacoes/historico">
       <ListItemIcon>
         <SchoolIcon />
       </ListItemIcon>
-      <ListItemText primary="Histórico de Solicitações" />
+      <ListItemText primary="Histórico" />
     </ListItem>
   </>
 );

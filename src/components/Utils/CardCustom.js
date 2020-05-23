@@ -7,25 +7,17 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
   footer: {
     display:"flex",
     justifyContent:"flex-end"
   }
 });
 
-export default function CardCustom({title, body, handleClick}) {
+export default function CardCustom({title, body, handleClick, borderColor}) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card style={{borderTop: `5px solid ${borderColor}`}}>
       <CardContent>
         <Typography variant="h6" component="h2">
           {title}

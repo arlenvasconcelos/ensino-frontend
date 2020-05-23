@@ -20,8 +20,9 @@ export default function MainStudent() {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item md={4}>
+        <Grid item sm={4}>
           <CardCustom 
+            borderColor="blue"
             title="Solicitação de Documentos" 
             body="Solicitar histórico, atestados, ementas, entre outros documentos acadêmicos"
             handleClick={()=> handleClick("Solicitação de Documentos")}

@@ -2,6 +2,11 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
+//Redux
+import { Provider } from 'react-redux';
+import store from './store';
+import { getAccessToken } from './service/localStorage';
+
 //templates
 import DashboardAdmin from './pages/DashboardAdmin';
 import DashboardStudent from './pages/DashboardStudent';
@@ -51,7 +56,7 @@ const DashboardEmployeeRoute = ({ component: Component, ...rest }) => (
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
       <Router>
         <Switch>
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
@@ -62,7 +67,7 @@ function App() {
           {/* <Redirect from="*" to="/admin/cursos" /> */}
         </Switch>
       </Router>
-    </div>
+    </Provider>
   );
 }
 
