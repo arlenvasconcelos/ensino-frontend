@@ -78,6 +78,7 @@ function App() {
           <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
           <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
           <DashboardStudentRoute path="/aluno/solicitacoes/cadastrar" exact component={SolicitationForm} />
+          <DashboardEmployeeRoute path="/servidor" exact component={MainStudent} />
           <Route path="/login" exact component={Login}/>
           <Redirect from="*" to="/login" />
         </Switch>

@@ -91,7 +91,6 @@ export function getUser() {
     if (token) {
       try {
         const res = await api.get('/auth/validate_token');
-        console.log(res.data)
         await dispatch(load(res.data));
       } catch (err) { /* */ }
     }
