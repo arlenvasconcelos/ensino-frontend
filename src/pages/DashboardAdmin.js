@@ -51,7 +51,7 @@ export default function DashboardAdmin({children, location}) {
     validateUser();
   }, []);
 
-  console.log(auth)
+  
 
   if(loading){
     return <>Carregando</>

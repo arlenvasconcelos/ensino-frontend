@@ -16,7 +16,6 @@ export default function Login({location}){
 
   const [user, setUser] = useState(defaultValue);
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
   const auth = useSelector(state => state.auth, []);
   
   const handleChange = (value, label) => {
@@ -27,26 +26,21 @@ export default function Login({location}){
     e.preventDefault()
     try {
       setLoading(true)
-      console.log(user)
       await dispatch(signin(user.username, user.password));
-      setRedirect(true)
       setUser(defaultValue)
-    } catch (err) {
       setLoading(false)
-      setRedirect(false)
+    } catch (err) {
       console.log(err)
     }
   };
 
   useEffect(() => {
+    if (!auth.logged){
       dispatch(getUser());
-  }, [dispatch]);
+    }
+  }, [auth.logged, dispatch]);
 
-  useEffect(() => {
-    if (redirect && auth.user.id !== -1) setLoading(false);
-  }, [auth.user.id, redirect]);
-
-  if (auth.logged) {
+  if (!loading && auth.logged) {
     switch(auth.user.type){
       case "Aluno":
         return <Redirect to={{ pathname: '/aluno', state: { from: location } }} />;
@@ -59,10 +53,9 @@ export default function Login({location}){
     }
   }
 
-  if (loading){
-    return(<>Carregando</>)
-  }
-
+  // if (loading){
+  //   return(<>Carregando</>)
+  // }
 
   return (
     <div>

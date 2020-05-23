@@ -52,21 +52,18 @@ export default function AppBarCustom ({handleDrawerOpen, open, title, location})
 
   const dispatch = useDispatch();
 
-  const [redirect, setRedirect] = useState(false);
+  // const [redirect, setRedirect] = useState(false);
+  const redirectPage = () => <Redirect to={{ pathname: '/', state: { from: location } }} />
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       await dispatch(signout());
-      setRedirect(true);
+      redirectPage();
     } catch (err) {
       console.log(err)
     }
   };
-
-  if (redirect){
-    return <Redirect to={{ pathname: '/', state: { from: location } }} />
-  }
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -85,7 +82,6 @@ export default function AppBarCustom ({handleDrawerOpen, open, title, location})
         </Typography>
         <Button color="inherit" onClick={(e) => handleLogout(e)}>
           Sair
-
         </Button>
       </Toolbar>
     </AppBar>
