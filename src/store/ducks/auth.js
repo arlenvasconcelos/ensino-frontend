@@ -9,7 +9,7 @@ const LOAD = 'user/LOAD';
 // State
 export const initialState = {
   user: {
-    id: "", 
+    id: -1, 
     username: "", 
     status: "", 
     name: "", 
@@ -30,7 +30,7 @@ export default function user(state = initialState, action) {
     case LOGIN:
       return {
         ...state,
-        email: action.email,
+        user: action.user,
         logged: true,
       };
     case LOGOUT:
@@ -47,9 +47,9 @@ export default function user(state = initialState, action) {
 }
 
 // actions creators
-export function login(email) {
+export function login(user) {
   return {
-    type: LOGIN, email,
+    type: LOGIN, user,
   };
 }
 
@@ -68,10 +68,10 @@ export function load(loadedUser) {
 export function signin(username, password) {
   return async (dispatch) => {
     const res = await api.post('/auth/sign_in', { username, password });
-    storage.setAccessToken(res.headers['acess-token']);
+    storage.setAccessToken(res.headers['access-token']);
     storage.setTypeToken(res.headers['type-token']);
     storage.setRefreshToken(res.headers['refresh-token']);
-    // dispatch(login(res.data.data));
+    dispatch(login(res.data));
   };
 }
 
@@ -87,10 +87,12 @@ export function signout() {
 
 export function getUser() {
   return async (dispatch) => {
-    if (storage.getAccessToken()) {
+    const token = storage.getAccessToken();
+    if (token) {
       try {
         const res = await api.get('/auth/validate_token');
-        // dispatch(load(res.data.data));
+        console.log(res.data)
+        await dispatch(load(res.data));
       } catch (err) { /* */ }
     }
   };

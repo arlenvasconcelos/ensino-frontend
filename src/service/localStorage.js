@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-export const getAccessToken = () => localStorage.getItem('access-token');
-export const getTypeToken = () => localStorage.getItem('type-token');
-export const getRefreshToken = () => localStorage.getItem('refresh-token');
+export const getAccessToken = () => localStorage.getItem('ensino-access-token');
+export const getTypeToken = () => localStorage.getItem('ensino-type-token');
+export const getRefreshToken = () => localStorage.getItem('ensino-refresh-token');
 
-export const setAccessToken = token => localStorage.setItem('access-token', token);
-export const setTypeToken = typeToken => localStorage.setItem('type-token', typeToken);
-export const setRefreshToken = refreshToken => localStorage.setItem('refresh-token', refreshToken);
+export const setAccessToken = token => localStorage.setItem('ensino-access-token', token);
+export const setTypeToken = typeToken => localStorage.setItem('ensino-type-token', typeToken);
+export const setRefreshToken = refreshToken => localStorage.setItem('ensino-refresh-token', refreshToken);
