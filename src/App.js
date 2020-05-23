@@ -74,6 +74,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
+          <DashboardAdminRoute path="/admin" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
           <DashboardStudentRoute path="/aluno" exact component={MainStudent} />

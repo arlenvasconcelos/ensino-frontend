@@ -58,7 +58,6 @@ export default ({children, location}) => {
     return <Redirect to={{ pathname: '/', state: { from: location } }} />;
   }
 
-
   return (
     <Dashboard listItems={listItems} title="Aluno">
       {children}

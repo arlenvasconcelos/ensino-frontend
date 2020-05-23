@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux'
+//materia ui
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
+
+//store
+import { signout } from '../../store/ducks/auth';
+import { Redirect } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -39,9 +46,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AppBarCustom ({handleDrawerOpen, open,title}) {
+export default function AppBarCustom ({handleDrawerOpen, open, title, location}) {
   
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  const [redirect, setRedirect] = useState(false);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await dispatch(signout());
+      setRedirect(true);
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
+  if (redirect){
+    return <Redirect to={{ pathname: '/', state: { from: location } }} />
+  }
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -58,6 +83,10 @@ export default function AppBarCustom ({handleDrawerOpen, open,title}) {
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           {title}
         </Typography>
+        <Button color="inherit" onClick={(e) => handleLogout(e)}>
+          Sair
+
+        </Button>
       </Toolbar>
     </AppBar>
   )
