@@ -37,21 +37,27 @@ export default ({children, location}) => {
   const auth = useSelector(state => state.auth, []);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (auth.user.id !== -1) setLoading(false);
-  }, [auth.user.id]);
-
-  if (!loading && (!auth.logged || auth.user.type !== 'Aluno')) {
-    return <Redirect to={{ pathname: '/', state: { from: location } }} />;
+  const validateUser = async () => {
+    try{
+      setLoading(true)
+      await dispatch(getUser());
+      setLoading(false)
+    }catch(err){
+      setLoading(false)
+    }
   }
+
+  useEffect(() => {
+    validateUser();
+  }, []);
 
   if(loading){
     return <>Carregando</>
   }
+  else if(!auth.logged || auth.user.type !== 'Aluno'){
+    return <Redirect to={{ pathname: '/', state: { from: location } }} />;
+  }
+
 
   return (
     <Dashboard listItems={listItems} title="Aluno">

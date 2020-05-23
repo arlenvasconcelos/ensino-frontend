@@ -21,6 +21,7 @@ import Login from './pages/Login';
 import SolicitationsHistoric  from './components/DashboardStudent/SolicitationsHistoric';
 import SolicitationForm  from './components/DashboardStudent/SolicitationForm';
 import MainStudent from './components/DashboardStudent/MainStudent';
+import MainEmployee from './components/DashboardEmployee/MainEmployee';
 
 console.log(getAccessToken())
 
@@ -78,7 +79,7 @@ function App() {
           <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
           <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
           <DashboardStudentRoute path="/aluno/solicitacoes/cadastrar" exact component={SolicitationForm} />
-          <DashboardEmployeeRoute path="/servidor" exact component={MainStudent} />
+          <DashboardEmployeeRoute path="/servidor" exact component={MainEmployee} />
           <Route path="/login" exact component={Login}/>
           <Redirect from="*" to="/login" />
         </Switch>
