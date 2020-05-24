@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch} from 'react-redux'
 //materia ui
 import clsx from 'clsx';
@@ -6,15 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/Menu';
 
 //store
 import { signout } from '../../store/ducks/auth';
 import { Redirect } from 'react-router-dom';
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -27,26 +23,15 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
+  logo: {
     marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
   },
   title: {
     flexGrow: 1,
   },
 }));
 
-export default function AppBarCustom ({handleDrawerOpen, open, title, location}) {
+export default function AppBarCustom ({location}) {
   
   const classes = useStyles();
 
@@ -66,20 +51,17 @@ export default function AppBarCustom ({handleDrawerOpen, open, title, location})
 
 
   return (
-    <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+    <AppBar position="absolute" className={clsx(classes.appBar)}>
       <Toolbar className={classes.toolbar}>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-        >
-          <MenuIcon />
-        </IconButton>
+        <div className={classes.logo}>
+          Logo IFRS
+        </div>
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-          {title}
+          Ensino
         </Typography>
+        <Button color="inherit" onClick={(e) => handleLogout(e)}>
+          Minhas Solicitações
+        </Button>
         <Button color="inherit" onClick={(e) => handleLogout(e)}>
           Sair
         </Button>

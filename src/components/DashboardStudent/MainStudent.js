@@ -55,8 +55,8 @@ export default function MainStudent() {
         <Grid item sm={4}>
           <CardCustom 
             borderColor="green"
-            title="Justificativa de Faltas" 
-            body="Subtitlo qualquer"
+            title="Justificativa de Faltas"
+            body="Subtitulo qualquer"
             handleClick={()=> handleClick("Solicitação de Documentos")}
           />
         </Grid>

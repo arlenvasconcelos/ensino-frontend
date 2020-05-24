@@ -14,18 +14,8 @@ export default function SolicitationForm() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} >
-      <form noValidate autoComplete="off">
-        <Box m={1}>
-          <TextField
-            error
-            id="outlined-error"
-            label="Error"
-            defaultValue="Hello World"
-            variant="outlined"
-          />
-        </Box>
-      </form>
-    </Card>
+    <>
+      Solicitation 
+    </>
   );
 }

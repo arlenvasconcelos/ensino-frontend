@@ -26,19 +26,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard({children, title, listItems}) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBarCustom title={title} open={open} handleDrawerOpen={handleDrawerOpen}/>
-      <SideBarCustom open={open} listItems={listItems} handleDrawerClose={handleDrawerClose}/>
+      <AppBarCustom title={title}/>
+      {/* <SideBarCustom listItems={listItems}/> */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>

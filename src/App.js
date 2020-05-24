@@ -19,7 +19,7 @@ import Login from './pages/Login';
 
 //student pages
 import SolicitationsHistoric  from './components/DashboardStudent/SolicitationsHistoric';
-import SolicitationForm  from './components/DashboardStudent/SolicitationForm';
+import Solicitation  from './components/DashboardStudent/Solicitation';
 import MainStudent from './components/DashboardStudent/MainStudent';
 import MainEmployee from './components/DashboardEmployee/MainEmployee';
 
@@ -78,8 +78,8 @@ function App() {
           <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
           <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
           <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
-          <DashboardStudentRoute path="/aluno/solicitacoes" exact component={SolicitationsHistoric} />
-          <DashboardStudentRoute path="/aluno/solicitacoes/cadastrar" exact component={SolicitationForm} />
+          <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={SolicitationsHistoric} />
+          <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={Solicitation} />
           <DashboardEmployeeRoute path="/servidor" exact component={MainEmployee} />
           <Route path="/login" exact component={Login}/>
           <Redirect from="*" to="/login" />

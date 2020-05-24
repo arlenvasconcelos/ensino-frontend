@@ -1,25 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
   drawerPaper: {
-    position: 'relative',
+    marginTop: theme.spacing(8),
+    position: 'absolute',
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -40,25 +32,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SideBarCustom ({listItems, open, handleDrawerClose}){
+export default function SideBarCustom ({listItems}){
 
   const classes = useStyles();
 
+  const [open, setOpen] = useState(false)
+
   return (
     <Drawer
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       variant="permanent"
       classes={{
         paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
       }}
       open={open}
     >
-      <div className={classes.toolbarIcon}>
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </div>
-      <Divider />
-        <List>{listItems}</List>
+      <List>{listItems}</List>
       <Divider />
     </Drawer>
   )
