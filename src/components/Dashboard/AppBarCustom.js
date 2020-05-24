@@ -50,7 +50,6 @@ export default function AppBarCustom ({location, navigation}) {
     }
   };
 
-
   return (
     <AppBar position="absolute" className={clsx(classes.appBar)}>
       <Toolbar className={classes.toolbar}>

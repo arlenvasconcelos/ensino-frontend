@@ -1,12 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import SchoolIcon from '@material-ui/icons/School';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {Button} from '@material-ui/core';
 
 //actions store
 import { getUser } from '../store/ducks/auth';
@@ -14,24 +10,21 @@ import { getUser } from '../store/ducks/auth';
 //import Template
 import Dashboard from '../template/Dashboard';
 
-export const listItems = (
+export const navigation = (
   <>
-    <ListItem button component={Link} to="/admin/cursos">
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Cursos" />
-    </ListItem>
-    <ListItem button component={Link} to="/admin/unidades">
-      <ListItemIcon>
-        <SchoolIcon />
-      </ListItemIcon>
-      <ListItemText primary="Unidades" />
-    </ListItem>
+    <Button color="inherit" component={RouterLink} to="/admin" >
+      Início
+    </Button>
+    <Button color="inherit" component={RouterLink} to="/admin/cursos" >
+      Cursos
+    </Button>
+    <Button color="inherit" component={RouterLink} to="/aluno/unidades" >
+      Unidades
+    </Button>
   </>
 );
 
-export default function DashboardAdmin({children, location}) {
+export default ({children, location}) => {
 
   const [loading, setLoading] = useState(true);
   const auth = useSelector(state => state.auth, []);
@@ -51,8 +44,6 @@ export default function DashboardAdmin({children, location}) {
     validateUser();
   }, []);
 
-  
-
   if(loading){
     return <>Carregando</>
   }
@@ -60,9 +51,8 @@ export default function DashboardAdmin({children, location}) {
     return <Redirect to={{ pathname: '/', state: { from: location } }} />;
   }
 
-
   return (
-    <Dashboard listItems={listItems} title="Servidor">
+    <Dashboard navigation={navigation}>
       {children}
     </Dashboard>
   );

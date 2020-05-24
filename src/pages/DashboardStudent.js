@@ -15,7 +15,7 @@ export const navigation = (
     <Button color="inherit" component={RouterLink} to="/aluno" >
       Início
     </Button>
-    <Button color="inherit" component={RouterLink} to="/solicitacoes/historic" >
+    <Button color="inherit" component={RouterLink} to="/aluno/solicitacoes/historic" >
       Minhas Solicitações
     </Button>
   </>

@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
+// theme material-ui
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,8 +26,23 @@ import Solicitation  from './components/DashboardStudent/Solicitation';
 import MainStudent from './components/DashboardStudent/MainStudent';
 import MainEmployee from './components/DashboardEmployee/MainEmployee';
 
-console.log(getAccessToken())
-
+//crete theme material-ui
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#6abf69',
+      main: '#388e3c',
+      dark: '#00600f',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 const DashboardAdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -71,21 +89,23 @@ const DashboardEmployeeRoute = ({ component: Component, ...rest }) => (
 function App() {
   console.log(store.getState())
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <DashboardAdminRoute path="/admin" exact component={Cursos} />
-          <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
-          <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
-          <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
-          <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={SolicitationsHistoric} />
-          <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={Solicitation} />
-          <DashboardEmployeeRoute path="/servidor" exact component={MainEmployee} />
-          <Route path="/login" exact component={Login}/>
-          <Redirect from="*" to="/login" />
-        </Switch>
-      </Router>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <DashboardAdminRoute path="/admin" exact component={Cursos} />
+            <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
+            <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
+            <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
+            <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={SolicitationsHistoric} />
+            <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={Solicitation} />
+            <DashboardEmployeeRoute path="/servidor" exact component={MainEmployee} />
+            <Route path="/login" exact component={Login}/>
+            <Redirect from="*" to="/login" />
+          </Switch>
+        </Router>
+      </Provider>
+    </ThemeProvider>
   );
 }
 
