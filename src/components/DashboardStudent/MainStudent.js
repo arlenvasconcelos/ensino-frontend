@@ -1,11 +1,23 @@
 import React from 'react';
-import { Grid,  } from '@material-ui/core';
+import {useSelector} from 'react-redux';
+import { Grid, Box, Typography  } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 //components
 import CardCustom from '../Utils/CardCustom'
 //api
 import api from '../../service/api';
 
+const useStyles = makeStyles((theme) => ({
+  welcome: {
+    fontWeight: theme.typography.fontWeightBold,
+  }
+}))
+
 export default function MainStudent() {
+
+  const {user} = useSelector(store => store.auth)
+
+  const classes = useStyles()
 
   const handleClick = (type) => {
     api.post('solicitations', {
@@ -20,6 +32,18 @@ export default function MainStudent() {
   return (
     <>
       <Grid container spacing={2}>
+        <Grid item sm={12}>
+          <Box p={2} bgcolor="white" boxShadow={1}>
+            <Typography component="p" variant="subtitle1" className={classes.welcome}>
+              Olá, {user.name}
+            </Typography>
+            <Typography component="p" variant="subtitle2">
+              Seja bem-vindo ao novo sistema de solicitações do Ensino. Através desse recurso
+              você poderá fazer várias solicitações de forma rápida e prática. Aproveite uma das
+              opções abaixo.
+            </Typography>
+          </Box>
+        </Grid>
         <Grid item sm={4}>
           <CardCustom 
             borderColor="blue"

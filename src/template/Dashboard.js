@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 
 //import components
 import AppBarCustom from '../components/Dashboard/AppBarCustom';
-import SideBarCustom from '../components/Dashboard/SideBarCustom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +30,6 @@ export default function Dashboard({children, title, listItems}) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBarCustom title={title}/>
-      {/* <SideBarCustom listItems={listItems}/> */}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
