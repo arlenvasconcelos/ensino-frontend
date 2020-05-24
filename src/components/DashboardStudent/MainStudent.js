@@ -7,6 +7,9 @@ import CardCustom from '../Utils/CardCustom'
 //api
 import api from '../../service/api';
 
+//constants
+import solicitationType from '../../constants/solicitationType'
+
 const useStyles = makeStyles((theme) => ({
   welcome: {
     fontWeight: theme.typography.fontWeightBold,
@@ -20,13 +23,14 @@ export default function MainStudent() {
   const classes = useStyles()
 
   const handleClick = (type) => {
-    api.post('solicitations', {
-      type,
-    }).then((response) => {
-      console.log(response);
-    }).catch((err)=> {
-      console.log(err)
-    })
+    console.log(type)
+    // api.post('solicitations', {
+    //   type,
+    // }).then((response) => {
+    //   console.log(response);
+    // }).catch((err)=> {
+    //   console.log(err)
+    // })
   }
 
   return (
@@ -49,7 +53,7 @@ export default function MainStudent() {
             borderColor="blue"
             title="Documentos Acadêmicos" 
             body="Histórico, atestados, ementas, entre outros documentos acadêmicos"
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.documentosAcademicos)}
           />
         </Grid>
         <Grid item sm={4}>
@@ -57,7 +61,7 @@ export default function MainStudent() {
             borderColor="red"
             title="Auxílio Emergencial" 
             body="Assistencia Estudantil"
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.auxilioEmergencial)}
           />
         </Grid>
         <Grid item sm={4}>
@@ -65,7 +69,7 @@ export default function MainStudent() {
             borderColor="black"
             title="Aproveitamento de Disciplinas" 
             body=""
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.aproveitamentoDisciplinas)}
           />
         </Grid>
         <Grid item sm={4}>
@@ -73,7 +77,7 @@ export default function MainStudent() {
             borderColor="yellow"
             title="Segunda Chamada" 
             body="Solicitar segunda chamada de prova, trabalho ou avaliação"
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.segundaChamada)}
           />
         </Grid>
         <Grid item sm={4}>
@@ -81,7 +85,7 @@ export default function MainStudent() {
             borderColor="green"
             title="Justificativa de Faltas"
             body="Subtitulo qualquer"
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.justificativaFaltas)}
           />
         </Grid>
         <Grid item sm={4}>
@@ -89,7 +93,7 @@ export default function MainStudent() {
             borderColor="orange"
             title="Revisão de Atividade" 
             body="Revisão de atividades, provas e avaliações."
-            handleClick={()=> handleClick("Solicitação de Documentos")}
+            handleClick={()=> handleClick(solicitationType.revisaoAtividades)}
           />
         </Grid>
         
