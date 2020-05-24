@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard({children, title, listItems}) {
+export default function Dashboard({children, navigation}) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBarCustom title={title}/>
+      <AppBarCustom navigation={navigation}/>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>

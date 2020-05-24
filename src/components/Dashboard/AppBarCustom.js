@@ -1,5 +1,6 @@
 import React from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 //materia ui
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +11,7 @@ import Button from '@material-ui/core/Button';
 
 //store
 import { signout } from '../../store/ducks/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AppBarCustom ({location}) {
+export default function AppBarCustom ({location, navigation}) {
   
   const classes = useStyles();
 
@@ -59,10 +60,8 @@ export default function AppBarCustom ({location}) {
         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
           Ensino
         </Typography>
-        <Button color="inherit" onClick={(e) => handleLogout(e)}>
-          Minhas Solicitações
-        </Button>
-        <Button color="inherit" onClick={(e) => handleLogout(e)}>
+        {navigation}
+        <Button color="inherit" variant="outlined" onClick={(e) => handleLogout(e)}>
           Sair
         </Button>
       </Toolbar>

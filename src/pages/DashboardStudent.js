@@ -1,12 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import SchoolIcon from '@material-ui/icons/School';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {Button} from '@material-ui/core';
 
 //actions store
 import { getUser } from '../store/ducks/auth';
@@ -14,20 +10,14 @@ import { getUser } from '../store/ducks/auth';
 //import Template
 import Dashboard from '../template/Dashboard';
 
-export const listItems = (
+export const navigation = (
   <>
-    <ListItem button component={Link} to="/aluno">
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Início" />
-    </ListItem>
-    <ListItem button component={Link} to="/aluno/solicitacoes/historico">
-      <ListItemIcon>
-        <SchoolIcon />
-      </ListItemIcon>
-      <ListItemText primary="Histórico" />
-    </ListItem>
+    <Button color="inherit" component={RouterLink} to="/aluno" >
+      Início
+    </Button>
+    <Button color="inherit" component={RouterLink} to="/solicitacoes/historic" >
+      Minhas Solicitações
+    </Button>
   </>
 );
 
@@ -59,7 +49,7 @@ export default ({children, location}) => {
   }
 
   return (
-    <Dashboard listItems={listItems} title="Aluno">
+    <Dashboard navigation={navigation}>
       {children}
     </Dashboard>
   );
