@@ -24,13 +24,13 @@ export default function MainStudent() {
 
   const handleClick = (type) => {
     console.log(type)
-    // api.post('solicitations', {
-    //   type,
-    // }).then((response) => {
-    //   console.log(response);
-    // }).catch((err)=> {
-    //   console.log(err)
-    // })
+    api.post('solicitations', {
+      type,
+    }).then((response) => {
+      console.log(response);
+    }).catch((err)=> {
+      console.log(err)
+    })
   }
 
   return (
