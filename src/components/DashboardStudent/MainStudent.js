@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import { Grid, Box, Typography  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,7 @@ import api from '../../service/api';
 
 //constants
 import solicitationType from '../../constants/solicitationType'
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   welcome: {
@@ -16,9 +17,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function MainStudent() {
+export default function MainStudent({location}) {
 
   const {user} = useSelector(store => store.auth)
+  const [newSolicitation, setNewSolicitation] = useState({
+    id: "",
+    type: ""
+  })
 
   const classes = useStyles()
 
@@ -27,10 +32,19 @@ export default function MainStudent() {
     api.post('solicitations', {
       type,
     }).then((response) => {
-      console.log(response);
+      console.log(response.data.data);
+      setNewSolicitation(response.data.data);
     }).catch((err)=> {
       console.log(err)
     })
+  }
+
+  if (newSolicitation.id){
+    return (
+      <Redirect 
+        to={{ pathname: `/aluno/solicitacoes/${newSolicitation.id}`, state: { from: location } }} 
+      />
+    )
   }
 
   return (
