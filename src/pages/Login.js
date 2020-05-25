@@ -16,6 +16,10 @@ export default function Login({location}){
 
   const [user, setUser] = useState(defaultValue);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({
+    field: "",
+    message: ""
+  })
   const auth = useSelector(state => state.auth, []);
   
   const handleChange = (value, label) => {
@@ -31,6 +35,7 @@ export default function Login({location}){
       setLoading(false)
     } catch (err) {
       console.log(err)
+      setError(err.data[0])
     }
   };
 
@@ -59,10 +64,19 @@ export default function Login({location}){
 
   return (
     <div>
-      <form onSubmit={(e) => handleLogin(e)}>
+      <form onSubmit={(e) => handleLogin(e)} style={{margin: '50px', display: 'flex', flexDirection: 'column', maxWidth: '200px'}}>
+        <label>Usuário</label>
         <input type="text" value={user.username} onChange={(e) => handleChange(e.target.value, 'username')}/>
+        <label>Senha</label>
         <input type="text" value={user.password} onChange={(e) => handleChange(e.target.value, 'password')}/>
         <button type="submit">Login</button>
+        {
+          error.message ? (
+            <p>{error.message}</p>
+          ) : (
+            <></>
+          )
+        }
       </form>
     </div>
   )
