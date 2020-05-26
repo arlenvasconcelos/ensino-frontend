@@ -39,7 +39,7 @@ export default function SolicitationMenu({sendSolicitation}){
     >
       <ListItem button onClick={sendSolicitation}>
         <ListItemIcon>
-          <SendIcon />
+          <SendIcon color="primary"/>
         </ListItemIcon>
         <ListItemText primary="Enviar" />
       </ListItem>
