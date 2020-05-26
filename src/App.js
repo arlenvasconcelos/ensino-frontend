@@ -42,6 +42,14 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        color: '#000',
+        fontWeight: 700
+      }
+    }
+  }
 });
 
 const DashboardAdminRoute = ({ component: Component, ...rest }) => (

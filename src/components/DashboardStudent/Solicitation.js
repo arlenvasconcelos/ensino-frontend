@@ -1,42 +1,92 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Box, Typography } from '@material-ui/core';
+import { Grid, Box, Paper, Typography } from '@material-ui/core';
 
 //components
 import SolicitationMenu from '../Solicitation/SolicitationMenu';
-import SolicitationSingle from '../Solicitation/SolicitationSingle';
+import Documents from '../Documents/Documents';
+import DocumentForm from '../Documents/DocumentForm';
+
+//service
+import api from '../../service/api';
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    '&* ': {
-      marginBottom: theme.spacing(1),
-    }
-  },
   main_card: {
     fontWeight: theme.typography.fontWeightBold
+  },
+  header_solicitation: {
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   }
 }));
 
 export default function SolicitationForm({location}) {
+
   const classes = useStyles();
+
+  const defaultSolicitation = {
+    id: '',
+    name: '',
+    type: '',
+    status: '',
+    documents: []
+
+  }
+
+  const [solicitation, setSolicitation] = useState(defaultSolicitation)
+
+  const loadSoliciation = async () => {
+    console.log(location)
+    const idSolicitation = location.pathname.split('/solicitacoes/')[1]
+    console.log(idSolicitation)
+    await api.get(`solicitations/${idSolicitation}`).then((response) => {
+      console.log(response.data)
+      setSolicitation(response.data.data)
+    })
+  }
+
+  const handleSubmitDocument = async (document) => {
+    console.log(document)
+    // await api.post(`/solicitations/${solicitation.id}/documents`, document)
+    //   .then((response) => {
+    //     console.log(response)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+  }
+
+  useEffect(() => {
+    loadSoliciation();
+  }, [])
+
 
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={2}>
-          <SolicitationMenu/>
-        </Grid>
-        <Grid item xs={12} sm={10} classeName={classes.content}>
-          <Box p={2} bgcolor="white" boxShadow={1} marginBottom={1}>
-            <Typography component="p" variant="subtitle1" className={classes.main_card}>
-              Dados da Solicitação
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={12}>
+          <Paper className={classes.header_solicitation}>
+            <Typography component="p" variant="h6" className={classes.main_card}>
+              {solicitation.name}
             </Typography>
             <Typography component="p" variant="subtitle2">
-              ....Mostrar dados da solicitação....
+              <Box component='span' fontWeight="fontWeightBold" >Nº: </Box>{solicitation.id}
+              <br/>
+              <Box component='span' fontWeight="fontWeightBold" >Tipo: </Box>{solicitation.type}
             </Typography>
-          </Box>
-          <SolicitationSingle/>
+          </Paper>
+          {
+            solicitation.status === 'created' ? (
+              <DocumentForm handleSubmitDocument={handleSubmitDocument}/>
+            ):(
+              <></>
+            )
+          }
+          <Documents documents={solicitation.documents}/>
         </Grid>
+        {/* <Grid item xs={12} sm={3} spacing={1}>
+          <SolicitationMenu/>
+        </Grid> */}
       </Grid>
     </>
   );
