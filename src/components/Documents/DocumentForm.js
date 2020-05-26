@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //material
 import { 
@@ -36,10 +36,10 @@ export default function DocumentForm({handleSubmitDocument}){
 
   const classes = useStyles();
 
-  const [document, setDocument] = useState({
+  const document = {
     type: 'Formulário', 
     name: 'Formulário de Solicitação de Documentos Acadêmicos', 
-    questions: []})
+  }
   const [question_1, setQuestion_1] = useState({ label: 'O que você precisa?', answer: '', })
   const [question_2, setQuestion_2] = useState(
     { 
@@ -72,19 +72,20 @@ export default function DocumentForm({handleSubmitDocument}){
   }
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault()
     
     const questionFormatted = {
       label: question_2.label,
       answer: question_2.answer.toString(),
     }
-    setDocument({
-      ...document, 
+
+    handleSubmitDocument({
+      ...document,
       questions: [question_1, questionFormatted, question_3]
     })
-
-    handleSubmitDocument(document);
   }
+
 
   return (
     <>

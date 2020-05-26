@@ -47,13 +47,13 @@ export default function SolicitationForm({location}) {
 
   const handleSubmitDocument = async (document) => {
     console.log(document)
-    // await api.post(`/solicitations/${solicitation.id}/documents`, document)
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
+    await api.post(`/solicitations/${solicitation.id}/documents`, document)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
