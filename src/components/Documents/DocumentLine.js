@@ -43,11 +43,6 @@ export default function DocumentLine ({document}){
       })
   }
 
-  // useEffect( ()=> {
-  //   loadDocument()
-  // },[])
-
-
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary

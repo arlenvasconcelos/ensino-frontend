@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import {Box, Typography, Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
-import SolicitationTable from '../Solicitation/SolicitationTable';
+import SolicitationTable from '../../components/Solicitation/SolicitationTable';
 
 //service
 import api from '../../service/api';
@@ -13,13 +13,13 @@ import api from '../../service/api';
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(2)
   }
 }));
 
 
 
-export default function SolicitationHistoric () {
+export default function Solicitations () {
 
   const classes = useStyles()
 

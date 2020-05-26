@@ -21,9 +21,9 @@ import Login from './pages/Login';
 
 
 //student pages
-import SolicitationsHistoric  from './components/DashboardStudent/SolicitationsHistoric';
-import Solicitation  from './components/DashboardStudent/Solicitation';
-import MainStudent from './components/DashboardStudent/MainStudent';
+import Solicitations  from './pages/Student/Solicitations';
+import SolicitationSingle  from './pages/Student/SolicitationSingle';
+import MainStudent from './pages/Student/MainStudent';
 import MainEmployee from './components/DashboardEmployee/MainEmployee';
 
 //crete theme material-ui
@@ -105,8 +105,8 @@ function App() {
             <DashboardAdminRoute path="/admin/cursos" exact component={Cursos} />
             <DashboardAdminRoute path="/admin/unidade" exact component={Unidades} />
             <DashboardStudentRoute path="/aluno" exact component={MainStudent} />
-            <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={SolicitationsHistoric} />
-            <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={Solicitation} />
+            <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={Solicitations} />
+            <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={SolicitationSingle} />
             <DashboardEmployeeRoute path="/servidor" exact component={MainEmployee} />
             <Route path="/login" exact component={Login}/>
             <Redirect from="*" to="/login" />

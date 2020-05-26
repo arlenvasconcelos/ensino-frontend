@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import { Grid, Box, Typography  } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 //components
-import CardCustom from '../Utils/CardCustom'
+import CardCustom from '../../components/Utils/CardCustom'
 //api
 import api from '../../service/api';
 

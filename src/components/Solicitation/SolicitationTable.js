@@ -20,8 +20,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import api from '../../service/api';
 
 const useStyles = makeStyles((theme) => ({
-  table: {
-    // minWidth: 650,
+  table_created: {
+    marginBottom: theme.spacing(2),
+    borderLeft: '3px solid orange'
+  },
+  table_sent: {
+    marginBottom: theme.spacing(2),
+    borderLeft: '3px solid green'
   },
   title: {
     flex: '1 1 100%',
@@ -58,10 +63,10 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
 
   return (
     <>
-    <TableContainer component={Paper}>
+    <TableContainer className={classes.table_created} component={Paper}>
       <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Solicitações não enviadas
-        </Typography>
+        Solicitações não enviadas
+      </Typography>
       <Table className={classes.table} aria-label="simple table">
         <TableHead title={'OK'}>
           <TableRow >
@@ -79,7 +84,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
                 {row.id}
               </TableCell>
               <TableCell align="center">{row.type}</TableCell>
-              <TableCell align="center">{row.status === 'created' ? "Criada" : "Em andamento"}</TableCell>
+              <TableCell align="center">{row.status === 'created' ? "Criada" : ""}</TableCell>
               <TableCell align="center">{row.created_at}</TableCell>
               <TableCell align="center">
                 <ButtonGroup variant="outlined" aria-label="acoes">
@@ -96,6 +101,42 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
         </TableBody>
       </Table>
     </TableContainer>
+    <TableContainer className={classes.table_sent} component={Paper}>
+      <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+          Solicitações enviadas
+        </Typography>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead title={'OK'}>
+          <TableRow >
+            <TableCell  >ID</TableCell>
+            <TableCell align="center">Tipo</TableCell>
+            <TableCell align="center">Status</TableCell>
+            <TableCell align="center">Criado em</TableCell>
+            <TableCell align="center">Ações</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {solicitationsSent.map((row, key) => (
+            <TableRow key={row.name + key}>
+              <TableCell>
+                {row.id}
+              </TableCell>
+              <TableCell align="center">{row.type}</TableCell>
+              <TableCell align="center">{row.status === 'sent' ? "Em andamento" : ""}</TableCell>
+              <TableCell align="center">{row.created_at}</TableCell>
+              <TableCell align="center">
+                <ButtonGroup variant="outlined" aria-label="acoes">
+                  <Button component={RouterLink} to={`/aluno/solicitacoes/${row.id}`}>
+                    <VisibilityIcon color="action"/>
+                  </Button>
+                </ButtonGroup>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
     </>
   );
 }

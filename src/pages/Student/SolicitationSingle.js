@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Paper, Typography } from '@material-ui/core';
 
 //components
-import SolicitationMenu from '../Solicitation/SolicitationMenu';
-import Documents from '../Documents/Documents';
-import DocumentForm from '../Documents/DocumentForm';
+import SolicitationMenu from '../../components/Solicitation/SolicitationMenu';
+import Documents from '../../components/Documents/Documents';
+import DocumentForm from '../../components/Documents/DocumentForm';
 
 //service
 import api from '../../service/api';
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SolicitationForm({location}) {
+export default function SolicitationSingle({location}) {
 
   const classes = useStyles();
 
