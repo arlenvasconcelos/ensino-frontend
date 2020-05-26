@@ -56,6 +56,16 @@ export default function SolicitationForm({location}) {
       })
   }
 
+  const sendSolicitation = async () => {
+    await api.post(`/solicitations/${solicitation.id}/unit/1`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   useEffect(() => {
     loadSoliciation();
   }, [])
@@ -64,7 +74,7 @@ export default function SolicitationForm({location}) {
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={9}>
           <Paper className={classes.header_solicitation}>
             <Typography component="p" variant="h6" className={classes.main_card}>
               {solicitation.name}
@@ -84,9 +94,9 @@ export default function SolicitationForm({location}) {
           }
           <Documents documents={solicitation.documents}/>
         </Grid>
-        {/* <Grid item xs={12} sm={3} spacing={1}>
-          <SolicitationMenu/>
-        </Grid> */}
+        <Grid item xs={12} sm={3} spacing={1}>
+          <SolicitationMenu sendSolicitation={sendSolicitation}/>
+        </Grid>
       </Grid>
     </>
   );

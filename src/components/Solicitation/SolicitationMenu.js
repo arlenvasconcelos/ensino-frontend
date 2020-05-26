@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SolicitationMenu(){
+export default function SolicitationMenu({sendSolicitation}){
 
   const classes = useStyles()
 
@@ -37,7 +37,7 @@ export default function SolicitationMenu(){
       }
       className={classes.root}
     >
-      <ListItem button component={Link} to="/admin/unidade">
+      <ListItem button onClick={sendSolicitation}>
         <ListItemIcon>
           <SendIcon />
         </ListItemIcon>
