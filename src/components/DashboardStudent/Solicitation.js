@@ -50,6 +50,7 @@ export default function SolicitationForm({location}) {
     await api.post(`/solicitations/${solicitation.id}/documents`, document)
       .then((response) => {
         console.log(response)
+        loadSoliciation()
       })
       .catch((err) => {
         console.log(err)
@@ -70,11 +71,10 @@ export default function SolicitationForm({location}) {
     loadSoliciation();
   }, [])
 
-
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={9}>
+        <Grid item xs={12} sm={9} spacing={2}>
           <Paper className={classes.header_solicitation}>
             <Typography component="p" variant="h6" className={classes.main_card}>
               {solicitation.name}
@@ -85,14 +85,15 @@ export default function SolicitationForm({location}) {
               <Box component='span' fontWeight="fontWeightBold" >Tipo: </Box>{solicitation.type}
             </Typography>
           </Paper>
+          <Typography variant="p"> Lista de Documentos da Solicitação</Typography>
+          <Documents documents={solicitation.documents}/>
           {
-            solicitation.status === 'created' ? (
+            solicitation.status === 'created' && solicitation.documents.length === 0 ? (
               <DocumentForm handleSubmitDocument={handleSubmitDocument}/>
             ):(
               <></>
             )
           }
-          <Documents documents={solicitation.documents}/>
         </Grid>
         <Grid item xs={12} sm={3} spacing={1}>
           <SolicitationMenu sendSolicitation={sendSolicitation}/>
