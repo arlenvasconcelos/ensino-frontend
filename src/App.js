@@ -21,7 +21,7 @@ import Login from './pages/Login';
 
 
 //student pages
-import Solicitations  from './pages/Student/Solicitations';
+import Solicitations  from './pages/Student/SolicitationsHistoric';
 import SolicitationSingle  from './pages/Student/SolicitationSingle';
 import MainStudent from './pages/Student/MainStudent';
 import MainEmployee from './components/DashboardEmployee/MainEmployee';

@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Paper, Typography } from '@material-ui/core';
 
 //components
-import SolicitationMenu from '../../components/Solicitation/SolicitationMenu';
+import SolicitationMenu from '../../components/SolicitationSingle/SolicitationMenu';
+import SolicitationInfo from '../../components/SolicitationSingle/SolicitationInfo';
 import Documents from '../../components/Documents/Documents';
 import DocumentForm from '../../components/Documents/DocumentForm';
 
@@ -29,7 +30,9 @@ export default function SolicitationSingle({location}) {
     name: '',
     type: '',
     status: '',
-    documents: []
+    documents: [],
+    interested: {},
+    created_by: {}
 
   }
 
@@ -74,7 +77,7 @@ export default function SolicitationSingle({location}) {
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={9} spacing={2}>
+        <Grid item xs={12} sm={9}>
           <Paper className={classes.header_solicitation}>
             <Typography component="p" variant="h6" className={classes.main_card}>
               {solicitation.name}
@@ -97,6 +100,7 @@ export default function SolicitationSingle({location}) {
         </Grid>
         <Grid item xs={12} sm={3} spacing={1}>
           <SolicitationMenu sendSolicitation={sendSolicitation}/>
+          <SolicitationInfo solicitation={solicitation}/>
         </Grid>
       </Grid>
     </>

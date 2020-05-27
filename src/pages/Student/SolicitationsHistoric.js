@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import {Box, Typography, Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
-import SolicitationTable from '../../components/Solicitation/SolicitationTable';
+import SolicitationTable from '../../components/SolicitationsHistoric/SolicitationTable';
 
 //service
 import api from '../../service/api';
@@ -41,7 +41,7 @@ export default function Solicitations () {
   return (
     <>
       <Paper className={classes.root}>
-        <Typography component="h6" vartiant="h6">
+        <Typography component="h6" variant="h6">
           Histórico de Solicitações
         </Typography>
       </Paper>
