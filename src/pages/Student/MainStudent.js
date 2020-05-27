@@ -112,9 +112,7 @@ export default function MainStudent({location}) {
             handleClick={()=> handleClick(5, solicitationType[5].name)}
           />
         </Grid>
-        
       </Grid>
-      
     </>
   )
 }

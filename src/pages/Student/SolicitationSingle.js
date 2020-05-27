@@ -46,10 +46,11 @@ export default function SolicitationSingle({location}) {
     })
   }
 
-  const handleSubmitDocument = async (document) => {
+  const handleSubmitDocument = async (document, unitId) => {
     await api.post(`/solicitations/${solicitation.id}/documents`, document)
       .then((response) => {
         console.log(response)
+        sendSolicitation(unitId)
         loadSoliciation();
       })
       .catch((err) => {
@@ -57,9 +58,10 @@ export default function SolicitationSingle({location}) {
       })
   }
 
-  const sendSolicitation = async () => {
-    await api.post(`/solicitations/${solicitation.id}/unit/1`)
+  const sendSolicitation = async (unitId) => {
+    await api.post(`/solicitations/${solicitation.id}/unit/${unitId}`)
       .then((response) => {
+        loadSoliciation();
         console.log(response)
       })
       .catch((err) => {
@@ -89,8 +91,8 @@ export default function SolicitationSingle({location}) {
             solicitation.documents.length
             ? (
               <>
-                <Documents documents={solicitation.documents}/>
                 <Typography variant="subtitle1"> Lista de Documentos da Solicitação</Typography>
+                <Documents documents={solicitation.documents}/>
               </>
             ) 
             : <></>
@@ -104,7 +106,7 @@ export default function SolicitationSingle({location}) {
           }
         </Grid>
         <Grid item xs={12} sm={3}>
-          <SolicitationMenu sendSolicitation={sendSolicitation}/>
+          {/* <SolicitationMenu sendSolicitation={sendSolicitation}/> */}
           <SolicitationInfo solicitation={solicitation}/>
         </Grid>
       </Grid>

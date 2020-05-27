@@ -8,7 +8,7 @@ export default function DocumentForm({handleSubmitDocument, type}){
   console.log(type)
   
   useEffect(()=>{
-    setForm(solicitationType[type].form)
+    setForm({...solicitationType[type].form, props: {handleSubmitDocument}})
   },[])
 
   console.log(form)

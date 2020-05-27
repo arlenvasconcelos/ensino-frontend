@@ -4,7 +4,7 @@ import FormOne from '../components/Forms/FormOne'
 const soliciationType = [
   {
     name: "Solicitação de Documentos Acadêmicos",
-    form: <FormOne/>
+    form: <FormOne handleSubmitDocument/>
   },
   {
     name: "Solicitação de Auxílio Emergencial",

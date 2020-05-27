@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+const initialUnitId = 1;
+
 export default function FormOne({handleSubmitDocument}){
 
   const classes = useStyles();
@@ -83,7 +85,7 @@ export default function FormOne({handleSubmitDocument}){
     handleSubmitDocument({
       ...document,
       questions: [question_1, questionFormatted, question_3]
-    })
+    }, initialUnitId)
   }
 
 

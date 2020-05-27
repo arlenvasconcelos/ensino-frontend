@@ -74,7 +74,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
         <TableHead>
           <TableRow variant="head">
             <TableCell>ID</TableCell>
-            <TableCell align="center">Tipo</TableCell>
+            <TableCell align="center">Nome</TableCell>
             <TableCell align="center">Status</TableCell>
             <TableCell align="center">Criado em</TableCell>
             <TableCell align="center">Ações</TableCell>
@@ -86,7 +86,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell align="center">{row.type}</TableCell>
+              <TableCell align="center">{row.name}</TableCell>
               <TableCell align="center">{solicitationStatus[row.status]}</TableCell>
               <TableCell align="center">{row.created_at}</TableCell>
               <TableCell align="center">
@@ -112,7 +112,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
         <TableHead>
           <TableRow >
             <TableCell  >ID</TableCell>
-            <TableCell align="center">Tipo</TableCell>
+            <TableCell align="center">Nome</TableCell>
             <TableCell align="center">Status</TableCell>
             <TableCell align="center">Criado em</TableCell>
             <TableCell align="center">Ações</TableCell>
@@ -124,7 +124,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
               <TableCell>
                 {row.id}
               </TableCell>
-              <TableCell align="center">{row.type}</TableCell>
+              <TableCell align="center">{row.name}</TableCell>
               <TableCell align="center">{solicitationStatus[row.status]}</TableCell>
               <TableCell align="center">{row.created_at}</TableCell>
               <TableCell align="center">

@@ -34,8 +34,8 @@ export default function SolicitationInfo({solicitation}){
           <Box component="span" fontWeight="fontWeightBold">{solicitation.id}</Box>
         </Typography>
         <Typography variant="body2" className={classes.item}>
-          <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Tipo: </Box>
-          <Box component="span" fontWeight="fontWeightBold">{solicitation.type}</Box>
+          <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Nome: </Box>
+          <Box component="span" fontWeight="fontWeightBold">{solicitation.name}</Box>
         </Typography>
         <Typography variant="body2" className={classes.item}>
           <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Interessado: </Box>
