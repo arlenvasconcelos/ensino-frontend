@@ -25,6 +25,7 @@ import Solicitations  from './pages/Student/SolicitationsHistoric';
 import SolicitationSingle  from './pages/Student/SolicitationSingle';
 import MainStudent from './pages/Student/MainStudent';
 import UnitSingle from './pages/Employee/UnitSingle';
+import SolicitationSingleEmployee from './pages/Employee/SolicitationSingle';
 
 //crete theme material-ui
 const theme = createMuiTheme({
@@ -113,6 +114,7 @@ function App() {
             <DashboardStudentRoute path="/aluno/solicitacoes/historico" exact component={Solicitations} />
             <DashboardStudentRoute path="/aluno/solicitacoes/:id" exact component={SolicitationSingle} />
             <DashboardEmployeeRoute path="/servidor/setor" exact component={UnitSingle} />
+            <DashboardEmployeeRoute path="/servidor/solicitacoes/:id" exact component={SolicitationSingleEmployee} />
             <Route path="/login" exact component={Login}/>
             <Redirect from="*" to="/login" />
           </Switch>

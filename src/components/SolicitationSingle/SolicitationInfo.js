@@ -60,6 +60,20 @@ export default function SolicitationInfo({solicitation}){
           <Box component="span" fontWeight="fontWeightBold">{solicitation.created_at}</Box>
         </Typography>
       </div>
+      <div className={classes.root}>
+        <Box fontSize="subtitle1.fontSize" fontWeight="fontWeightBold">
+          Histórico da Solicitação
+        </Box>
+        {
+          solicitation.units.length && solicitation.units.map((row, key) => (
+            <Typography variant="body2" className={classes.item}>
+              <Box component="span" color="text.secondary" fontWeight="fontWeightBold">{key+1} -  Setor: </Box>
+              <Box component="span" fontWeight="fontWeightBold">{row.name}</Box>
+            </Typography>    
+          ))
+        }
+        
+      </div>
     </>
   )
 }

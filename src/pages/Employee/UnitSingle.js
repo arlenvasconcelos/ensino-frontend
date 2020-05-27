@@ -1,27 +1,43 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Grid,  } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 //components
-
+import SolicitationTable from '../../components/UnitSingle/SolicitationTable';
 
 //api
 import api from '../../service/api';
 
+const useStyles = makeStyles((theme) => ({
+
+}))
+
 export default function UnitSingle() {
 
-  const handleClick = (type) => {
-    api.post('solicitations', {
-      type,
-    }).then((response) => {
-      console.log(response);
-    }).catch((err)=> {
+  const classes = useStyles()
+
+  const [solicitations, setSolicitations] = useState([]);
+
+  const loadSolicitations = async () => {
+    await api.get('/solicitations', 
+      { params : { scope: 'unit'} }
+    )
+    .then((response) => {
+      console.log(response.data)
+      setSolicitations(response.data.data)
+    })
+    .catch((err) => {
       console.log(err)
     })
   }
 
+  useEffect(() => {
+    loadSolicitations();
+  }, [])
+
   return (
     <>
-      página single unit
+      <SolicitationTable solicitations={solicitations}/>
     </>
   )
 }
