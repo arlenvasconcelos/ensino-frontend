@@ -7,6 +7,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import {makeStyles} from '@material-ui/core/styles';
 
 //icons
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SolicitationMenu({sendSolicitation}){
+export default function SolicitationMenu({sendSolicitation, setOpenDialogForm}){
 
   const classes = useStyles()
 
@@ -43,18 +44,19 @@ export default function SolicitationMenu({sendSolicitation}){
         </ListItemIcon>
         <ListItemText primary="Enviar" />
       </ListItem>
-      {/* <ListItem button component={Link} to="/admin/cursos">
+      <ListItem button>
         <ListItemIcon>
           <MoveToInboxIcon />
         </ListItemIcon>
           <ListItemText primary="Arquivar" />
-      </ListItem> */}
-      {/* <ListItem button component={Link} to="/admin/cursos">
+      </ListItem>
+      <Divider />
+      <ListItem button onClick={() => setOpenDialogForm(true)}>
         <ListItemIcon>
           <PostAddIcon />
         </ListItemIcon>
           <ListItemText primary="Novo documento" />
-      </ListItem> */}
+      </ListItem>
     </List>
   )
 };
