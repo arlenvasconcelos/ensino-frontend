@@ -58,7 +58,7 @@ export default function MainStudent({location}) {
               Olá, {user.name}
             </Typography>
             <Typography component="p" variant="subtitle2">
-              Seja bem-vindo ao novo sistema de solicitações do Ensino. Através desse recurso
+              Seja bem-vindo ao novo sistema de solicitações do Ensino. Através deste recurso,
               você poderá fazer várias solicitações de forma rápida e prática. Aproveite uma das
               opções abaixo.
             </Typography>

@@ -15,13 +15,13 @@ export const navigation = (
     <Button color="inherit" component={RouterLink} to="/servidor" >
       Início
     </Button>
-    <Button color="inherit" component={RouterLink} to="/servidor/setor/solicitacoes" >
+    <Button color="inherit" component={RouterLink} to="/servidor/setor" >
       Setor
     </Button>
   </>
 );
 
-export default ({children, location}) => {
+export default function DashboardEmployee({children, location}) {
 
   const [loading, setLoading] = useState(true);
   const auth = useSelector(state => state.auth, []);

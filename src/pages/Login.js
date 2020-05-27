@@ -50,17 +50,13 @@ export default function Login({location}){
       case "Aluno":
         return <Redirect to={{ pathname: '/aluno', state: { from: location } }} />;
       case "Servidor":
-        return <Redirect to={{ pathname: '/servidor', state: { from: location } }} />;
+        return <Redirect to={{ pathname: '/servidor/setor', state: { from: location } }} />;
       case "Admin":
         return <Redirect to={{ pathname: '/admin', state: { from: location } }} />;
       default:
         return <Redirect to={{ pathname: '/', state: { from: location } }} />
     }
   }
-
-  // if (loading){
-  //   return(<>Carregando</>)
-  // }
 
   return (
     <div>
