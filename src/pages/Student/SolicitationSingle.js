@@ -88,7 +88,7 @@ export default function SolicitationSingle({location}) {
               <Box component='span' fontWeight="fontWeightBold" >Tipo: </Box>{solicitation.type}
             </Typography>
           </Paper>
-          <Typography variant="p"> Lista de Documentos da Solicitação</Typography>
+          <Typography variant="subtitle1"> Lista de Documentos da Solicitação</Typography>
           <Documents documents={solicitation.documents}/>
           {
             solicitation.status === 'created' && solicitation.documents.length === 0 ? (
@@ -98,7 +98,7 @@ export default function SolicitationSingle({location}) {
             )
           }
         </Grid>
-        <Grid item xs={12} sm={3} spacing={1}>
+        <Grid item xs={12} sm={3}>
           <SolicitationMenu sendSolicitation={sendSolicitation}/>
           <SolicitationInfo solicitation={solicitation}/>
         </Grid>

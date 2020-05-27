@@ -48,6 +48,11 @@ const theme = createMuiTheme({
         color: '#000',
         fontWeight: 700
       }
+    },
+    MuiTableCell: {
+      head:{
+        fontWeight: 700
+      }
     }
   }
 });

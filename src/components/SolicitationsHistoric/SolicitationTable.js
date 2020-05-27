@@ -19,6 +19,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 //service
 import api from '../../service/api';
 
+//constants
+import solicitationStatus from '../../constants/solicitationStatus';
+
 const useStyles = makeStyles((theme) => ({
   table_created: {
     marginBottom: theme.spacing(2),
@@ -68,9 +71,9 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
         Solicitações não enviadas
       </Typography>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead title={'OK'}>
-          <TableRow >
-            <TableCell  >ID</TableCell>
+        <TableHead>
+          <TableRow variant="head">
+            <TableCell>ID</TableCell>
             <TableCell align="center">Tipo</TableCell>
             <TableCell align="center">Status</TableCell>
             <TableCell align="center">Criado em</TableCell>
@@ -79,12 +82,12 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
         </TableHead>
         <TableBody>
           {solicitationsCreated.map((row, key) => (
-            <TableRow key={row.name + key}>
-              <TableCell>
+            <TableRow key={row.name + key} >
+              <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
               <TableCell align="center">{row.type}</TableCell>
-              <TableCell align="center">{row.status === 'created' ? "Criada" : ""}</TableCell>
+              <TableCell align="center">{solicitationStatus[row.status]}</TableCell>
               <TableCell align="center">{row.created_at}</TableCell>
               <TableCell align="center">
                 <ButtonGroup variant="outlined" aria-label="acoes">
@@ -106,7 +109,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
           Solicitações enviadas
         </Typography>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead title={'OK'}>
+        <TableHead>
           <TableRow >
             <TableCell  >ID</TableCell>
             <TableCell align="center">Tipo</TableCell>
@@ -122,7 +125,7 @@ export default function SimpleTable({solicitations, loadSolicitations}) {
                 {row.id}
               </TableCell>
               <TableCell align="center">{row.type}</TableCell>
-              <TableCell align="center">{row.status === 'sent' ? "Em andamento" : ""}</TableCell>
+              <TableCell align="center">{solicitationStatus[row.status]}</TableCell>
               <TableCell align="center">{row.created_at}</TableCell>
               <TableCell align="center">
                 <ButtonGroup variant="outlined" aria-label="acoes">

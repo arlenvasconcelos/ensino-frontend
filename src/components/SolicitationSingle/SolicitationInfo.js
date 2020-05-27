@@ -2,6 +2,9 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+//constants
+import solicitationStatus from '../../constants/solicitationStatus';
+
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -13,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
 export default function SolicitationInfo({solicitation}){
 
   const classes = useStyles()
@@ -22,7 +26,7 @@ export default function SolicitationInfo({solicitation}){
   return( 
     <>
       <div className={classes.root}>
-        <Box fontSize="subtitle1.fontSize" fontWeight="fontWeightBold" color="primary.dark">
+        <Box fontSize="subtitle1.fontSize" fontWeight="fontWeightBold">
           Informações da Solicitação
         </Box>
         <Typography variant="body2" className={classes.item}>
@@ -40,6 +44,12 @@ export default function SolicitationInfo({solicitation}){
         <Typography variant="body2" className={classes.item}>
           <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Criado por: </Box>
           <Box component="span" fontWeight="fontWeightBold">{solicitation.created_by.name}</Box>
+        </Typography>
+        <Typography variant="body2" className={classes.item}>
+          <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Status: </Box>
+          <Box component="span" fontWeight="fontWeightBold">
+            {solicitationStatus[solicitation.status]}
+          </Box>
         </Typography>
         <Typography variant="body2" className={classes.item}>
           <Box component="span" color="text.secondary" fontWeight="fontWeightBold">Quantidade de documentos: </Box>
