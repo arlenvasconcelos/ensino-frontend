@@ -4,14 +4,14 @@ import solicitationType from '../../constants/solicitationType'
 
 export default function DocumentForm({handleSubmitDocument, type}){
 
-  const [form, setForm] = useState();
+  const [form, setForm] = useState(<></>);
   console.log(type)
   
   useEffect(()=>{
-    setForm({...solicitationType[type].form, props: {handleSubmitDocument}})
+    if (solicitationType[type].form !== null)
+      setForm({...solicitationType[type].form, props: {handleSubmitDocument}})
   },[])
 
-  console.log(form)
   return (
     <>
       {form}
