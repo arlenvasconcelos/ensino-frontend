@@ -1,10 +1,30 @@
-const soliciationType = {
-  documentosAcademicos: "Solicitação de Documentos Acadêmicos",
-  auxilioEmergencial: "Solicitação de Auxílio Emergencial",
-  aproveitamentoDisciplinas: "Solicitação de Aproveitamento de Disciplinas",
-  segundaChamada: "Solicitação de Segunda Chamada",
-  justificativaFaltas: "Solicitação de Justificativa de Faltas",
-  revisaoAtividades: "Solicitação de Revisão de Atividades",
-}
+import React from 'react'
+import FormOne from '../components/Forms/FormOne'
 
+const soliciationType = [
+  {
+    name: "Solicitação de Documentos Acadêmicos",
+    form: <FormOne/>
+  },
+  {
+    name: "Solicitação de Auxílio Emergencial",
+    form: null
+  },
+  {
+    name: "Solicitação de Aproveitamento de Disciplinas",
+    form: null
+  },
+  {
+    name: "Solicitação de Segunda Chamada",
+    form: null
+  },
+  {
+    name: "Solicitação de Justificativa de Faltas",
+    form: null
+  },
+  {
+    name: "Solicitação de Revisão de Atividades",
+    form: null
+  },
+]
 export default soliciationType

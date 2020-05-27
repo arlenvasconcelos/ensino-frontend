@@ -39,9 +39,7 @@ export default function SolicitationSingle({location}) {
   const [solicitation, setSolicitation] = useState(defaultSolicitation)
 
   const loadSoliciation = async () => {
-    console.log(location)
     const idSolicitation = location.pathname.split('/solicitacoes/')[1]
-    console.log(idSolicitation)
     await api.get(`solicitations/${idSolicitation}`).then((response) => {
       console.log(response.data)
       setSolicitation(response.data.data)
@@ -49,11 +47,10 @@ export default function SolicitationSingle({location}) {
   }
 
   const handleSubmitDocument = async (document) => {
-    console.log(document)
     await api.post(`/solicitations/${solicitation.id}/documents`, document)
       .then((response) => {
         console.log(response)
-        loadSoliciation()
+        loadSoliciation();
       })
       .catch((err) => {
         console.log(err)
@@ -78,7 +75,7 @@ export default function SolicitationSingle({location}) {
     <>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={9}>
-          <Paper className={classes.header_solicitation}>
+          {/* <Paper className={classes.header_solicitation}>
             <Typography component="p" variant="h6" className={classes.main_card}>
               {solicitation.name}
             </Typography>
@@ -87,12 +84,20 @@ export default function SolicitationSingle({location}) {
               <br/>
               <Box component='span' fontWeight="fontWeightBold" >Tipo: </Box>{solicitation.type}
             </Typography>
-          </Paper>
-          <Typography variant="subtitle1"> Lista de Documentos da Solicitação</Typography>
-          <Documents documents={solicitation.documents}/>
+          </Paper> */}
+          {
+            solicitation.documents.length
+            ? (
+              <>
+                <Documents documents={solicitation.documents}/>
+                <Typography variant="subtitle1"> Lista de Documentos da Solicitação</Typography>
+              </>
+            ) 
+            : <></>
+          }
           {
             solicitation.status === 'created' && solicitation.documents.length === 0 ? (
-              <DocumentForm handleSubmitDocument={handleSubmitDocument}/>
+              <DocumentForm handleSubmitDocument={handleSubmitDocument} type={solicitation.type}/>
             ):(
               <></>
             )
