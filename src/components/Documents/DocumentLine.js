@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 //service
 import api from '../../service/api';
+import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -22,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     '& *': {
       marginBottom: theme.spacing(1)
+    }
+  },
+  footer: {
+    '& *':{
+      marginTop: '0px',
     }
   }
 }));
@@ -58,13 +64,25 @@ export default function DocumentLine ({document}){
           fullDocument.questions && fullDocument.questions.map((question, key) => (
             <Typography component="p" variant="subtitle2" key={key+question.label}>
               <Box component="span" mr={1} fontWeight="fontWeightBold">
-                {question.label}: 
+                {question.label} 
               </Box>
               <Box component="span">
                 {question.answer}
               </Box>
             </Typography>
           ))
+        }
+        <Divider/>
+        {/* footer */}
+        {
+          fullDocument.user ? (
+            <>
+              <Box className={classes.footer} fontSize="caption.fontSize" fontWeight="fontWeightBold" color="text.secondary">
+                <p> Autor: {fullDocument.user.name} </p>
+                <p> Criado em: {fullDocument.created_at} </p>
+              </Box>
+            </>
+          ) : (<></>)
         }
         
       </ExpansionPanelDetails>

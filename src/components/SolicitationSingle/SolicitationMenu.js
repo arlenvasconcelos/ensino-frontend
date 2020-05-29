@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SolicitationMenu({sendSolicitation, setOpenDialogForm}){
+export default function SolicitationMenu({sendSolicitation, setNewDocument}){
 
   const classes = useStyles()
 
@@ -45,7 +45,7 @@ export default function SolicitationMenu({sendSolicitation, setOpenDialogForm}){
         <ListItemText primary="Arquivar" />
       </ListItem>
       <Divider />
-      <ListItem button onClick={() => setOpenDialogForm(true)}>
+      <ListItem button onClick={() => setNewDocument(true)}>
         <ListItemIcon>
           <PostAddIcon />
         </ListItemIcon>

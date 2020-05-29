@@ -54,7 +54,7 @@ export default function FormOne({handleSubmitDocument}){
       }
     }
   );
-  const [question_3, setQuestion_3] = useState({ label: 'Observações', answer: '', })
+  const [question_3, setQuestion_3] = useState({ label: 'Observações:', answer: '', })
 
   const handleQuestion_1 = (e) => {
     setQuestion_1({...question_1, 'answer': e.target.value })

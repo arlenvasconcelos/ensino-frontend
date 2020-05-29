@@ -5,7 +5,7 @@ import { Grid, Box, Paper, Typography } from '@material-ui/core';
 //components
 import SolicitationMenu from '../../components/SolicitationSingle/SolicitationMenu';
 import SolicitationInfo from '../../components/SolicitationSingle/SolicitationInfo';
-import Documents from '../../components/Documents/Documents';
+import Documents from '../../components/SolicitationSingle/Documents';
 import DocumentForm from '../../components/Documents/DocumentForm';
 
 //service

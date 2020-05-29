@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 //components
 import SolicitationMenu from '../../components/SolicitationSingle/SolicitationMenu';
 import SolicitationInfo from '../../components/SolicitationSingle/SolicitationInfo';
-import Documents from '../../components/Documents/Documents';
+import Documents from '../../components/SolicitationSingle/Documents';
 import DocumentForm from '../../components/Documents/DocumentForm';
-import FormDialog from '../../components/SolicitationSingle/FormDialog';
 import Title from '../../components/Title';
 
 //service
@@ -27,7 +26,6 @@ export default function SolicitationSingle({location}) {
   }
 
   const [solicitation, setSolicitation] = useState(defaultSolicitation)
-  const [openDialogForm, setOpenDialogForm] = useState(false)
   const [newDocument, setNewDocument] = useState(false);
 
   const loadSoliciation = async () => {
@@ -88,20 +86,11 @@ export default function SolicitationSingle({location}) {
               </>
             )
           }
-          {
-            openDialogForm 
-              ? <FormDialog 
-                  openDialogForm={openDialogForm} 
-                  setOpenDialogForm={setOpenDialogForm}
-                  handleSubmitDocument={handleSubmitDocument}
-                />
-              : <></>
-          }
         </Grid>
         <Grid item xs={12} sm={3}>
           <SolicitationMenu 
             sendSolicitation={sendSolicitation}
-            setOpenDialogForm={setNewDocument}
+            setNewDocument={setNewDocument}
           />
           <SolicitationInfo solicitation={solicitation}/>
         </Grid>

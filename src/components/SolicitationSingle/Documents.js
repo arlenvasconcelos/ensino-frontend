@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 //components
-import DocumentLine from './DocumentLine';
+import DocumentLine from '../Documents/DocumentLine';
 
 const useStyles = makeStyles((theme) => ({
   root: {
