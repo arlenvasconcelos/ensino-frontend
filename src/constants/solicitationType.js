@@ -1,7 +1,8 @@
 import React from 'react'
 import FormOne from '../components/Forms/FormOne'
+import DefaultForm from '../components/Forms/DefaultForm'
 
-const soliciationType = [
+const studentForms = [
   {
     name: "Solicitação de Documentos Acadêmicos",
     form: <FormOne handleSubmitDocument/>
@@ -27,4 +28,11 @@ const soliciationType = [
     form: null
   },
 ]
-export default soliciationType
+
+const employeeForms = [
+  {
+    name: "Parecer",
+    form: <DefaultForm handleSubmitDocument/>
+  }
+]
+export {studentForms, employeeForms}

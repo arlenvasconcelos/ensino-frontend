@@ -32,7 +32,8 @@ export default function SolicitationSingle({location}) {
     status: '',
     documents: [],
     interested: {},
-    created_by: {}
+    created_by: {},
+    units: []
 
   }
 

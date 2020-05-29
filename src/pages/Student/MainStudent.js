@@ -8,7 +8,7 @@ import CardCustom from '../../components/Utils/CardCustom'
 import api from '../../service/api';
 
 //constants
-import solicitationType from '../../constants/solicitationType'
+import {studentForms} from '../../constants/solicitationType'
 import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -69,7 +69,7 @@ export default function MainStudent({location}) {
             borderColor="blue"
             title="Documentos Acadêmicos" 
             body="Histórico, atestados, ementas, entre outros documentos acadêmicos"
-            handleClick={()=> handleClick(0, solicitationType[0].name)}
+            handleClick={()=> handleClick(0, studentForms[0].name)}
           />
         </Grid>
         <Grid item sm={4}>

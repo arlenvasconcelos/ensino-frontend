@@ -6,10 +6,10 @@ import SolicitationMenu from '../../components/SolicitationSingle/SolicitationMe
 import SolicitationInfo from '../../components/SolicitationSingle/SolicitationInfo';
 import Documents from '../../components/Documents/Documents';
 import DocumentForm from '../../components/Documents/DocumentForm';
+import FormDialog from '../../components/SolicitationSingle/FormDialog';
 
 //service
 import api from '../../service/api';
-import FormDialog from '../../components/SolicitationSingle/FormDialog';
 
 export default function SolicitationSingle({location}) {
 
@@ -27,6 +27,7 @@ export default function SolicitationSingle({location}) {
 
   const [solicitation, setSolicitation] = useState(defaultSolicitation)
   const [openDialogForm, setOpenDialogForm] = useState(false)
+  const [newDocument, setNewDocument] = useState(false);
 
   const loadSoliciation = async () => {
     const idSolicitation = location.pathname.split('/solicitacoes/')[1]
@@ -78,8 +79,8 @@ export default function SolicitationSingle({location}) {
             )
           }
           {
-            solicitation.status === 'created' && solicitation.documents.length === 0 ? (
-              <DocumentForm handleSubmitDocument={handleSubmitDocument} type={solicitation.type}/>
+            newDocument ? (
+              <DocumentForm handleSubmitDocument={handleSubmitDocument} userType="employee"/>
             ):(
               <>
               </>

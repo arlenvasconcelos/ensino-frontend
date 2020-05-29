@@ -21,8 +21,6 @@ export default function SolicitationInfo({solicitation}){
 
   const classes = useStyles()
 
-  console.log(solicitation)
-
   return( 
     <>
       <div className={classes.root}>
@@ -65,14 +63,16 @@ export default function SolicitationInfo({solicitation}){
           Histórico da Solicitação
         </Box>
         {
-          solicitation.units.length && solicitation.units.map((row, key) => (
-            <Typography variant="body2" className={classes.item}>
-              <Box component="span" color="text.secondary" fontWeight="fontWeightBold">{key+1} -  Setor: </Box>
-              <Box component="span" fontWeight="fontWeightBold">{row.name}</Box>
-            </Typography>    
-          ))
+          solicitation.units.length > 0 ?
+            (
+              solicitation.units.map((row, key) => (
+                <Typography variant="body2" className={classes.item}>
+                  <Box component="span" color="text.secondary" fontWeight="fontWeightBold">{key+1} -  Setor: </Box>
+                  <Box component="span" fontWeight="fontWeightBold">{row.name}</Box>
+                </Typography>  
+              ))  
+            ) : (<>Solicitação ainda nao foi enviada</>)
         }
-        
       </div>
     </>
   )

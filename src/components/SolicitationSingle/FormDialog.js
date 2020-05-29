@@ -1,17 +1,16 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import React, { useState } from 'react';
+import {Button, Dialog, DialogActions, DialogContent, 
+  DialogContentText, DialogTitle, TextField, FormControl, InputBase } from '@material-ui/core';
+import {withStyles, fade} from '@material-ui/core/styles'
+
 
 export default function FormDialog({setOpenDialogForm, openDialogForm}) {
 
-  const handleClickOpen = () => {
-    setOpenDialogForm(true);
-  };
+  const [document, setDocument] = useState({
+    label: "",
+    answer: ""
+  })
+
 
   const handleClose = () => {
     setOpenDialogForm(false);
@@ -20,19 +19,26 @@ export default function FormDialog({setOpenDialogForm, openDialogForm}) {
   return (
     <div>
       <Dialog open={openDialogForm} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Documento</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          {/* <DialogContentText>
             Qual Tipo de documento você deseja?
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
+          </DialogContentText> */}
+          <FormControl >
+           <TextField
+              id="filled-full-width"
+              label="Título"
+              style={{ margin: 8 }}
+              placeholder=""
+              // helperText="Full width!"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="filled"
+            />
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
