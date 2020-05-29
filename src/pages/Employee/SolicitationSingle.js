@@ -7,6 +7,7 @@ import SolicitationInfo from '../../components/SolicitationSingle/SolicitationIn
 import Documents from '../../components/Documents/Documents';
 import DocumentForm from '../../components/Documents/DocumentForm';
 import FormDialog from '../../components/SolicitationSingle/FormDialog';
+import Title from '../../components/Title';
 
 //service
 import api from '../../service/api';
@@ -42,6 +43,7 @@ export default function SolicitationSingle({location}) {
       .then((response) => {
         console.log(response)
         loadSoliciation();
+        setNewDocument(false);
       })
       .catch((err) => {
         console.log(err)
@@ -71,7 +73,7 @@ export default function SolicitationSingle({location}) {
             solicitation.documents.length ? 
             (
               <>
-                <Typography variant="subtitle1"> Lista de Documentos da Solicitação</Typography>
+                <Title> Lista de Documentos da Solicitação</Title>
                 <Documents documents={solicitation.documents}/>
               </>
             ) : (
@@ -99,7 +101,7 @@ export default function SolicitationSingle({location}) {
         <Grid item xs={12} sm={3}>
           <SolicitationMenu 
             sendSolicitation={sendSolicitation}
-            setOpenDialogForm={setOpenDialogForm}
+            setOpenDialogForm={setNewDocument}
           />
           <SolicitationInfo solicitation={solicitation}/>
         </Grid>
